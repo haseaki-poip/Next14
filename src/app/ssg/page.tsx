@@ -17,8 +17,9 @@ type Data = {
 };
 
 const getDatas = async (): Promise<Data> => {
-  // オプションで何も指定しないとssg
-  const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo");
+  const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo", {
+    cache: "force-cache",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
