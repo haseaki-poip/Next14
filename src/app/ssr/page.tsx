@@ -17,7 +17,6 @@ type Data = {
 };
 
 const getDatas = async (): Promise<Data> => {
-  // オプションで何も指定しないとssg
   const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo", {
     cache: "no-store",
   });
@@ -29,7 +28,7 @@ const getDatas = async (): Promise<Data> => {
   return res.json();
 };
 
-const SSG = async () => {
+const SSR = async () => {
   const data = await getDatas();
 
   return (
@@ -39,4 +38,4 @@ const SSG = async () => {
   );
 };
 
-export default SSG;
+export default SSR;
