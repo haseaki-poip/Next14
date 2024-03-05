@@ -1,4 +1,4 @@
-import SsgChildComponent from "@/components/SsgChildComponent";
+import { Suspense } from "react";
 
 type Data = {
   abbreviation: string; // タイムゾーンの略称
@@ -18,10 +18,13 @@ type Data = {
   week_number: number; // 年の何週目か
 };
 
-const getDatas = async (): Promise<Data> => {
-  const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo", {
-    cache: "force-cache",
-  });
+const getDatas = async (place: string): Promise<Data> => {
+  const res = await fetch(
+    `http://worldtimeapi.org/api/timezone/Asia/${place}`,
+    {
+      cache: "force-cache",
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -30,13 +33,13 @@ const getDatas = async (): Promise<Data> => {
   return res.json();
 };
 
-const SSG = async () => {
-  const data = await getDatas();
+const SSG = async ({ params: { place } }: { params: { place: string } }) => {
+  const data = await getDatas(place);
 
   return (
     <div>
       <h1>{data.datetime}</h1>
-      <SsgChildComponent date={data.datetime} />
+      <p>place: {place}</p>
     </div>
   );
 };
