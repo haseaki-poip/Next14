@@ -22,8 +22,9 @@ const getDatas = async (locate: string): Promise<Data> => {
   const res = await fetch(
     `http://worldtimeapi.org/api/timezone/Asia/${locate}`,
     {
-      cache: "force-cache",
-      // next: { revalidate: 10 },
+      //   cache: "force-cache",
+      cache: "no-store",
+      //   next: { revalidate: 10 },
     }
   );
 
