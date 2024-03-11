@@ -16,13 +16,16 @@ type Data = {
   week_number: number; // 年の何週目か
 };
 
-const getDatas = async (): Promise<Data> => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+const getDatas = async (locate: string): Promise<Data> => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const res = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo", {
-    cache: "no-store",
-    // next: { revalidate: 10 },
-  });
+  const res = await fetch(
+    `http://worldtimeapi.org/api/timezone/Asia/${locate}`,
+    {
+      cache: "force-cache",
+      // next: { revalidate: 10 },
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -31,8 +34,8 @@ const getDatas = async (): Promise<Data> => {
   return res.json();
 };
 
-const Timer = async () => {
-  const data = await getDatas();
+const Timer = async ({ locate }: { locate?: string }) => {
+  const data = await getDatas(locate ?? "Tokyo");
   return <div>{data.datetime}</div>;
 };
 
