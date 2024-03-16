@@ -1,0 +1,10 @@
+query Dogs {
+  dogs {
+    description
+    id
+    name
+    thumbnail {
+      url
+    }
+  }
+}

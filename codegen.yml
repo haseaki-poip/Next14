@@ -1,0 +1,11 @@
+overwrite: true
+schema: "https://api-ap-northeast-1.hygraph.com/v2/cltlakf3y15cj06w9zso7do7d/master"
+documents:
+  - "src/**/*.graphql"
+  - "src/**/*.tsx"
+generates:
+  src/generated/codegen.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typed-document-node"
