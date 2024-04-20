@@ -1,0 +1,70 @@
+.layoutForm {
+  width: 100%;
+  padding-top: 36px;
+}
+.layoutFormInner {
+  max-width: 450px;
+  width: 98%;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+.formErrorInner {
+  width: 100%;
+  margin-bottom: 32px;
+}
+.formError {
+  background: #ffdbdb;
+  padding: 30px 10px;
+  text-align: center;
+  color: #ff6f6f;
+  border-radius: 4px;
+  border: 2px solid currentColor;
+}
+.form {
+  color: rgb(106, 106, 106);
+}
+.formSection {
+  margin-bottom: 34px;
+}
+.sectionTtl {
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+.inputBox {
+  width: 100%;
+  height: 40px;
+  padding: 16px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid transparent;
+  font-size: 18px;
+}
+.inputBox__100px {
+  width: 100px;
+}
+.inputBox:focus {
+  border: 1px solid #a0e1ff;
+}
+.isError {
+  border: 1px solid #ff6f6f;
+}
+.errorSection {
+  margin-top: 2px;
+  position: relative;
+}
+.errorMessage {
+  position: absolute;
+  color: #ff6f6f;
+}
+.areaBox {
+  width: 100%;
+  padding: 16px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid transparent;
+  font-size: 18px;
+}
+.submitSection {
+  width: fit-content;
+  margin: 64px auto 0;
+}

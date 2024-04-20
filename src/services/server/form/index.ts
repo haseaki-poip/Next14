@@ -5,7 +5,22 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 type FormState = {
-  error: string;
+  error: {
+    [key: string]: string;
+  };
+};
+
+const conversionKeyToItemName = (key: string) => {
+  switch (key) {
+    case "name":
+      return "ユーザ名";
+    case "age":
+      return "年齢";
+    case "message":
+      return "一言メッセージ";
+    default:
+      return "項目";
+  }
 };
 
 export const registerUserInfo = async (
@@ -32,14 +47,24 @@ export const registerUserInfo = async (
     });
 
   if (!safeparsedComment.success) {
-    return { error: safeparsedComment.error.issues[0].message };
+    const errorField = safeparsedComment.error.issues[0].path[0];
+    const errorMessage = safeparsedComment.error.issues[0].message;
+
+    const wholeErrorMessage = `${conversionKeyToItemName(
+      errorField as string
+    )}の入力に誤りがあります`;
+
+    return {
+      error: {
+        whole: wholeErrorMessage,
+        [errorField]: errorMessage,
+      },
+    };
   }
 
   const userInfo = safeparsedComment.data;
 
   await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  console.log(userInfo);
 
   //   revalidatePath("/");
   redirect("/");
