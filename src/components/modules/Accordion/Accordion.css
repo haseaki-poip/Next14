@@ -1,0 +1,14 @@
+.accordion-content {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s, padding 0.5s;
+  background: #5e5a5a;
+  display: flex;
+  align-items: center;
+}
+
+.accordion-content.open {
+  height: 100px; /* 十分に大きな値を設定 */
+  padding: 20px 0;
+}
