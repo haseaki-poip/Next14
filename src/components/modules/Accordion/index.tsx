@@ -16,15 +16,15 @@ const Accordion = ({
   };
 
   return (
-    <div className="accordion-item">
-      <div className="accordion-title" onClick={toggleAccordion}>
-        {question}
-        <button>{isOpen ? "-" : "+"}</button>
-      </div>
-      <div className={`accordion-content ${isOpen ? "open" : ""}`}>
-        {answer}
-      </div>
-    </div>
+    <dl className="bl_accordion">
+      <dt className="bl_accordion_index" onClick={toggleAccordion}>
+        <p className="bl_accordion_txt">{question}</p>
+        <button className="bl_accordion_toggle">{isOpen ? "-" : "+"}</button>
+      </dt>
+      <dd className={`bl_accordion_content ${isOpen ? "open" : ""}`}>
+        <p className="bl_accordion_txt">{answer}</p>
+      </dd>
+    </dl>
   );
 };
 
