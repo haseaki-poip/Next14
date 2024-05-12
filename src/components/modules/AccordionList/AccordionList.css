@@ -1,0 +1,9 @@
+.bl_accordionUnit {
+  width: 700px;
+}
+.bl_accordionUnit > * {
+  border-bottom: 1px solid #eeeeee;
+}
+.bl_accordionUnit > *:last-child {
+  border-bottom: 1px solid transparent;
+}
